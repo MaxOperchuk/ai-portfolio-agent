@@ -54,7 +54,7 @@ func (client *TelegramClient) SendNotification(
 		ChatID: client.ChatID,
 		Text: fmt.Sprintf(
 			"🤖 New Portfolio Agent request\n\nThread id: %s\nQuestion: %s\nDuration: %d ms",
-			notification.ThreadId,
+			notification.ThreadID,
 			notification.Message,
 			notification.DurationMs,
 		),
