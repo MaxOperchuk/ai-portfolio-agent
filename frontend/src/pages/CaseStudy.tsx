@@ -1,7 +1,7 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { ArrowLeft, CheckCircle, ArrowRight } from "lucide-react";
-import Layout from "@/components/Layout";
+import { ArrowLeft, CheckCircle, ArrowRight, Github } from "lucide-react";
 import ImpactBlock from "@/components/ImpactBlock";
+import Layout from "@/components/Layout";
 import { projects } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
@@ -28,7 +28,7 @@ const CaseStudy = () => {
             )}
           >
             <ArrowLeft size={18} />
-            Back to Case Studies
+            Back to Projects
           </Link>
 
           {/* Header */}
@@ -52,18 +52,9 @@ const CaseStudy = () => {
           </header>
 
           {/* Impact Metrics */}
-          <div
-            className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-16 opacity-0 animate-fade-in"
-            style={{ animationDelay: "0.1s" }}
-          >
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-16 opacity-0 animate-fade-in" style={{ animationDelay: "0.1s" }}>
             {project.metrics.map((metric, index) => (
-              <ImpactBlock
-                key={index}
-                metric={metric.value}
-                label={metric.label}
-                variant={metric.variant}
-                size="lg"
-              />
+              <ImpactBlock key={index} metric={metric.value} label={metric.label} variant={metric.variant} size="lg" />
             ))}
           </div>
 
@@ -79,7 +70,7 @@ const CaseStudy = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 bg-gradient-coral rounded-full" />
                   <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
-                    Context
+                    Overview
                   </h2>
                 </div>
                 <p className="text-lg text-muted-foreground leading-relaxed pl-4 border-l-2 border-border/50">
@@ -95,7 +86,7 @@ const CaseStudy = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 bg-gradient-coral rounded-full" />
                   <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
-                    Strategy
+                    Technical Approach
                   </h2>
                 </div>
                 <p className="text-lg text-muted-foreground leading-relaxed pl-4 border-l-2 border-border/50">
@@ -111,7 +102,7 @@ const CaseStudy = () => {
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-1 h-8 bg-gradient-coral rounded-full" />
                   <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
-                    Execution
+                    Implementation
                   </h2>
                 </div>
                 <ul className="space-y-4">
@@ -145,7 +136,7 @@ const CaseStudy = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-1 h-8 bg-gradient-coral rounded-full" />
                   <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground">
-                    Impact
+                    Outcome
                   </h2>
                 </div>
                 <div
@@ -166,40 +157,42 @@ const CaseStudy = () => {
             <aside className="lg:col-span-1">
               <div
                 className={cn(
-                  "sticky top-24 p-6 md:p-8 rounded-2xl",
+                  "sticky top-24 p-5 md:p-6 rounded-2xl",
                   "bg-card border border-border/60",
                   "shadow-xl shadow-primary/5",
                   "opacity-0 animate-fade-in"
                 )}
                 style={{ animationDelay: "0.3s" }}
               >
-                <h3 className="font-display text-xl font-semibold text-foreground mb-6">
-                  Key Results
+                <h3 className="font-display text-xl font-semibold text-foreground mb-3">
+                  Technology Stack
                 </h3>
-                <div className="space-y-4">
-                  {project.metrics.map((metric, index) => (
-                    <div
-                      key={index}
-                      className={cn(
-                        "flex items-center justify-between py-3 px-4 rounded-xl",
-                        "bg-background/50 border border-border/40",
-                        "transition-all duration-300",
-                        "hover:border-primary/30 hover:bg-primary/5"
-                      )}
-                    >
-                      <span className="text-sm text-muted-foreground">
-                        {metric.label}
-                      </span>
-                      <span className="font-display font-bold text-lg text-primary">
-                        {metric.value}
-                      </span>
-                    </div>
+                <div className="h-1 w-12 rounded-full bg-gradient-coral mb-4" aria-hidden="true" />
+                <ul aria-label="Technologies" className="flex flex-wrap gap-1.5">
+                  {Array.from(new Set(project.stack
+                    ? project.stack.flatMap((group) => group.technologies)
+                    : project.metrics.map((metric) => metric.value)
+                  )).map((technology) => (
+                    <li key={technology} className="rounded-full bg-primary/5 px-2.5 py-1 font-display text-sm font-semibold leading-6 text-primary">
+                      {technology}
+                    </li>
                   ))}
-                </div>
+                </ul>
 
-                <div className="mt-8 pt-6 border-t border-border/50">
+                <div className="mt-5 pt-4 border-t border-border/50">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mb-3 flex items-center justify-center gap-2 w-full py-4 rounded-xl border border-border font-semibold hover:border-primary hover:text-primary transition-colors"
+                    >
+                      <Github size={18} aria-hidden="true" />
+                      View on GitHub
+                    </a>
+                  )}
                   <Link
-                    to="/contact"
+                    to="mailto:maksym.operchuk@gmail.com"
                     className={cn(
                       "flex items-center justify-center gap-2 w-full py-4 rounded-xl",
                       "bg-gradient-coral text-white font-semibold",
@@ -209,7 +202,7 @@ const CaseStudy = () => {
                       "active:scale-[0.98]"
                     )}
                   >
-                    Discuss Your Project
+                    Send an Email
                     <ArrowRight size={18} />
                   </Link>
                 </div>

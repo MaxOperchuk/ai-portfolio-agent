@@ -1,6 +1,6 @@
+import Recommendations from "@/components/Recommendations";
 import { Link } from "react-router-dom";
-import { ArrowRight, TrendingUp, Target, BarChart3, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Code2, Database, BrainCircuit, Sparkles } from "lucide-react";
 import Layout from "@/components/Layout";
 import ProjectCard from "@/components/ProjectCard";
 import ImpactBlock from "@/components/ImpactBlock";
@@ -10,22 +10,22 @@ import { cn } from "@/lib/utils";
 const Index = () => {
   const services = [
     {
-      icon: TrendingUp,
-      title: "SEO & Organic Growth",
+      icon: Code2,
+      title: "Backend Development",
       description:
-        "Intent-driven content architecture that turns search into a scalable acquisition channel.",
+        "Python backend services, REST APIs, and database integrations using FastAPI and Django.",
     },
     {
-      icon: Target,
-      title: "Distribution Strategy",
+      icon: Database,
+      title: "Data Collection & Automation",
       description:
-        "Multi-channel content systems that reach the right audience at the right stage.",
+        "Web scraping pipelines, product matching, and asynchronous data processing.",
     },
     {
-      icon: BarChart3,
-      title: "Funnel & Retention",
+      icon: BrainCircuit,
+      title: "AI & LLM Integration",
       description:
-        "Content that converts, onboards, and retains—reducing churn and increasing LTV.",
+        "RAG assistants, semantic search, and LLM-based solutions for product matching.",
     },
   ];
 
@@ -49,7 +49,7 @@ const Index = () => {
               style={{ animationDelay: "0.1s" }}
             >
               <Sparkles size={16} className="animate-pulse-soft" />
-              Content Strategy & Growth Marketing
+              Python / AI Backend Developer
             </div>
 
             {/* Headline */}
@@ -57,9 +57,10 @@ const Index = () => {
               className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground mb-6 opacity-0 animate-fade-in leading-[1.1]"
               style={{ animationDelay: "0.2s" }}
             >
-              Content is a{" "}
+              Building with
+              <br />
               <span className="relative inline-block">
-                <span className="gradient-text">growth system</span>
+                <span className="gradient-text">Python & AI</span>
                 <svg
                   className="absolute -bottom-2 left-0 w-full"
                   viewBox="0 0 200 12"
@@ -90,16 +91,14 @@ const Index = () => {
               className="text-lg md:text-xl lg:text-2xl text-muted-foreground mb-10 max-w-2xl leading-relaxed opacity-0 animate-fade-in"
               style={{ animationDelay: "0.3s" }}
             >
-              I build strategic content that compounds—driving organic traffic,
-              qualified leads, and measurable business results.{" "}
-              <span className="text-foreground font-medium">
-                No vanity metrics. No content for content's sake.
-              </span>
+              I build backend services, data collection systems, and AI-powered
+              tools. My experience spans LLM integrations, test automation,
+              and web scraping.
             </p>
 
             {/* CTAs */}
             <div
-              className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in"
+              className="flex flex-col sm:flex-row sm:flex-wrap gap-4 opacity-0 animate-fade-in"
               style={{ animationDelay: "0.4s" }}
             >
               <Link
@@ -113,11 +112,11 @@ const Index = () => {
                   "active:scale-95"
                 )}
               >
-                View Case Studies
+                View Projects
                 <ArrowRight size={20} className="transition-transform group-hover:translate-x-1" />
               </Link>
               <Link
-                to="/contact"
+                to="mailto:maksym.operchuk@gmail.com"
                 className={cn(
                   "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full",
                   "bg-background border-2 border-border text-foreground font-semibold text-lg",
@@ -125,7 +124,7 @@ const Index = () => {
                   "hover:border-primary hover:text-primary hover:bg-primary/5"
                 )}
               >
-                Get in Touch
+                Send an Email
               </Link>
             </div>
           </div>
@@ -135,10 +134,10 @@ const Index = () => {
             className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 opacity-0 animate-fade-in"
             style={{ animationDelay: "0.5s" }}
           >
-            <ImpactBlock metric="+120%" label="Avg. Traffic Growth" size="lg" />
-            <ImpactBlock metric="+35%" label="Lead Generation" size="lg" />
-            <ImpactBlock metric="−28%" label="Churn Reduction" size="lg" variant="positive" />
-            <ImpactBlock metric="8+" label="Years Experience" size="lg" variant="neutral" />
+            <ImpactBlock metric="Backend" label="APIs & Services" size="lg" showIcon={false} />
+            <ImpactBlock metric="AI / RAG" label="LLM Integrations" size="lg" showIcon={false} />
+            <ImpactBlock metric="Automation" label="Scraping & Testing" size="lg" showIcon={false} />
+            <ImpactBlock metric="3+" label="Years Experience" size="lg" variant="neutral" />
           </div>
         </div>
       </section>
@@ -153,21 +152,21 @@ const Index = () => {
             <span
               className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 opacity-0 animate-fade-in"
             >
-              Services
+              What I Do
             </span>
             <h2
               className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 opacity-0 animate-fade-in"
               style={{ animationDelay: "0.1s" }}
             >
-              Content Strategy That{" "}
-              <span className="gradient-text">Drives Growth</span>
+              Backend, Data &{" "}
+              <span className="gradient-text">AI Solutions</span>
             </h2>
             <p
               className="text-lg text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
-              I work with founders and marketing teams to build content systems
-              that generate predictable, measurable results.
+              I build backend applications, automate data collection,
+              and integrate AI into practical workflows.
             </p>
           </div>
 
@@ -240,7 +239,7 @@ const Index = () => {
                 className="text-lg text-muted-foreground opacity-0 animate-fade-in"
                 style={{ animationDelay: "0.2s" }}
               >
-                Real projects with measurable impact
+                Selected backend and AI projects
               </p>
             </div>
             <Link
@@ -284,12 +283,14 @@ const Index = () => {
                 "hover:border-primary hover:text-primary"
               )}
             >
-              View All Case Studies
+              View All Projects
               <ArrowRight size={18} />
             </Link>
           </div>
         </div>
       </section>
+
+      <Recommendations />
 
       {/* CTA Section */}
       <section className="relative py-24 md:py-32 overflow-hidden">
@@ -309,24 +310,24 @@ const Index = () => {
             <span
               className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 opacity-0 animate-fade-in"
             >
-              Let's Work Together
+              Explore My Experience
             </span>
             <h2
               className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 opacity-0 animate-fade-in"
               style={{ animationDelay: "0.1s" }}
             >
-              Ready to build a{" "}
-              <span className="gradient-text">content growth system</span>?
+              Want to know more about{" "}
+              <span className="gradient-text">my experience</span>?
             </h2>
             <p
               className="text-lg text-muted-foreground mb-10 max-w-xl mx-auto opacity-0 animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
-              Let's discuss how strategic content can drive measurable results
-              for your business.
+              Ask my AI assistant about my skills, projects,
+              and professional background.
             </p>
             <Link
-              to="/contact"
+              to="/ask-ai"
               className={cn(
                 "inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full",
                 "bg-gradient-coral text-white font-semibold text-lg",
@@ -338,7 +339,7 @@ const Index = () => {
               )}
               style={{ animationDelay: "0.3s" }}
             >
-              Start a Conversation
+              Ask AI
               <ArrowRight size={20} />
             </Link>
           </div>

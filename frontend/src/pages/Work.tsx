@@ -29,17 +29,17 @@ const Work = () => {
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 opacity-0 animate-fade-in"
               style={{ animationDelay: "0.1s" }}
             >
-              Case{" "}
-              <span className="gradient-text">Studies</span>
+              Selected{" "}
+              <span className="gradient-text">Projects</span>
             </h1>
             <p
               className="text-lg md:text-xl text-muted-foreground max-w-2xl opacity-0 animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
-              Real projects structured as growth experiments. Each case shows
-              context, strategy, execution, and{" "}
+              Backend and AI projects, with details about their architecture,
+              implementation, and {" "}
               <span className="text-foreground font-medium">
-                measurable impact
+                technologies
               </span>
               .
             </p>
@@ -77,7 +77,7 @@ const Work = () => {
             style={{ animationDelay: "0.6s" }}
           >
             <p className="text-muted-foreground">
-              More case studies coming soon...
+              More projects coming soon...
             </p>
           </div>
         </div>

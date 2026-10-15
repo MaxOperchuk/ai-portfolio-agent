@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, Mail, Linkedin, Twitter } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin, Github, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:hello@alexmorgan.com", label: "Email" },
+    { icon: Send, href: "https://t.me/maksoperchuk", label: "Telegram" },
+    { icon: Github, href: "https://github.com/MaxOperchuk", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/maksym-operchuk", label: "LinkedIn" },
+    { icon: Mail, href: "mailto:maksym.operchuk@gmail.com", label: "Email" },
   ];
 
   const navLinks = [
-    { href: "/work", label: "Work" },
+    { href: "/work", label: "Projects" },
     { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: "/ask-ai", label: "Ask AI" },
   ];
 
   return (
@@ -34,9 +35,9 @@ const Footer = () => {
                 className="group inline-block font-display font-bold text-2xl md:text-3xl text-foreground"
               >
                 <span className="relative">
-                  Alex
+                  Maksym
                   <span className="text-primary">.</span>
-                  Morgan
+                  Operchuk
                   <span
                     className={cn(
                       "absolute -bottom-1 left-0 h-0.5 bg-gradient-coral",
@@ -46,11 +47,11 @@ const Footer = () => {
                 </span>
               </Link>
               <p className="text-muted-foreground max-w-sm leading-relaxed">
-                Content strategist helping B2B companies turn content into a
-                predictable growth engine.
+                Python developer building backend services, data collection
+                systems, and AI-powered tools.
               </p>
               <Link
-                to="/contact"
+                to="mailto:maksym.operchuk@gmail.com"
                 className={cn(
                   "inline-flex items-center gap-2 px-6 py-3 rounded-full",
                   "bg-gradient-coral text-white font-medium",
@@ -60,7 +61,7 @@ const Footer = () => {
                   "active:scale-95"
                 )}
               >
-                Start a Project
+                Send an Email
                 <ArrowUpRight size={18} className="transition-transform group-hover:rotate-45" />
               </Link>
             </div>
@@ -99,6 +100,8 @@ const Footer = () => {
                       key={social.label}
                       href={social.href}
                       aria-label={social.label}
+                      target={social.href.startsWith("https://") ? "_blank" : undefined}
+                      rel={social.href.startsWith("https://") ? "noopener noreferrer" : undefined}
                       className={cn(
                         "flex items-center justify-center w-10 h-10 rounded-full",
                         "bg-muted/50 text-muted-foreground",
@@ -121,7 +124,7 @@ const Footer = () => {
         <div className="border-t border-border/50">
           <div className="section-container py-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-              <p>© {currentYear} Alex Morgan. All rights reserved.</p>
+              <p>© {currentYear} Maksym Operchuk. All rights reserved.</p>
               <p className="flex items-center gap-1">
                 Crafted with
                 <span className="inline-block animate-pulse-soft text-primary">

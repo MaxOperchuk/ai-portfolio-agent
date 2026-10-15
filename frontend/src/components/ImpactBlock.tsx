@@ -8,6 +8,7 @@ interface ImpactBlockProps {
   size?: "sm" | "md" | "lg";
   className?: string;
   animate?: boolean;
+  showIcon?: boolean;
 }
 
 const ImpactBlock = ({
@@ -17,6 +18,7 @@ const ImpactBlock = ({
   size = "md",
   className,
   animate = true,
+  showIcon = true,
 }: ImpactBlockProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [displayMetric, setDisplayMetric] = useState(animate ? "0" : metric);
@@ -135,7 +137,7 @@ const ImpactBlock = ({
         >
           {displayMetric}
         </span>
-        {variant !== "neutral" && (
+        {showIcon && variant !== "neutral" && (
           <span className="text-xs opacity-60">{iconVariants[variant]}</span>
         )}
       </div>

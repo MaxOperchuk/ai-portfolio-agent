@@ -1,25 +1,51 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Sparkles } from "lucide-react";
+import DownloadCV from "@/components/DownloadCV";
 import Layout from "@/components/Layout";
 import { cn } from "@/lib/utils";
 
 const skills = [
-  "SEO Strategy & Execution",
-  "Content Architecture",
-  "Distribution Systems",
-  "Funnel Optimization",
-  "Analytics & Measurement",
-  "Product Marketing",
-  "Onboarding Content",
-  "Retention Strategy",
+  "Python", "FastAPI", "Django", "PostgreSQL", "SQLAlchemy",
+  "asyncio", "Web Scraping", "pytest", "gRPC", "OpenAI API",
+  "LangGraph", "RAG", "Docker", "CI/CD",
 ];
 
 const projectTypes = [
-  "B2B SaaS content strategy",
-  "Product launch campaigns",
-  "SEO-driven growth programs",
-  "Customer education systems",
-  "Content operations setup",
+  "Backend services and REST APIs",
+  "Data collection and scraping pipelines",
+  "Product matching and LLM integrations",
+  "Test automation and mock services",
+  "RAG assistants and semantic search",
+];
+
+const experience = [
+  {
+    company: "Rozetka",
+    role: "Python Developer",
+    period: "November 2025 – September 2026",
+    highlights: [
+      "Maintained a FastAPI backend service.",
+      "Developed and maintained Python scraping pipelines for product data from multiple sources.",
+      "Expanded competitor product and category coverage and improved data extraction reliability.",
+      "Analyzed product attributes and identified noisy titles, including extra words and symbols, as a key challenge for product matching.",
+      "Proposed a matching improvement that was implemented and frequently used.",
+      "Built product matching algorithms and integrated LLM approaches for complex matching cases.",
+      "Optimized processing with asyncio, multithreading, and multiprocessing.",
+    ],
+  },
+  {
+    company: "Ajax Systems",
+    role: "Python Developer in Test",
+    period: "July 2024 – November 2025",
+    highlights: [
+      "Developed mock gRPC services for integration testing of distributed components.",
+      "Automated unit, integration, and end-to-end tests in Python and integrated tests into CI/CD.",
+      "Investigated complex issues through log analysis, debugging, and root cause analysis.",
+      "Reconstructed the behavior of an undocumented notification feature through collaboration with QA, app developers, and backend teams.",
+      "Used this in-depth understanding to diagnose failures and fix unstable notification tests more quickly, with a focus on stabilizing the test suite.",
+      "Mentored two team members and supported their onboarding and technical development.",
+    ],
+  },
 ];
 
 const About = () => {
@@ -43,8 +69,9 @@ const About = () => {
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 opacity-0 animate-fade-in"
               style={{ animationDelay: "0.1s" }}
             >
-              Building content that{" "}
-              <span className="gradient-text">drives growth</span>
+              Python backend
+              <br />
+              and <span className="gradient-text">AI engineering</span>
             </h1>
             <blockquote
               className={cn(
@@ -54,9 +81,12 @@ const About = () => {
               style={{ animationDelay: "0.2s" }}
             >
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-coral rounded-full" />
-              "I don't see content as output. I see it as a system that drives
-              growth through learning, distribution, and compounding results."
+              My experience spans backend development, data collection,
+              automated testing, and practical LLM integrations.
             </blockquote>
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-4">
+              <DownloadCV />
+            </div>
           </div>
         </div>
       </section>
@@ -73,32 +103,46 @@ const About = () => {
                 className="text-lg md:text-xl text-muted-foreground leading-relaxed opacity-0 animate-fade-in"
                 style={{ animationDelay: "0.3s" }}
               >
-                I'm Alex Morgan, a content strategist who treats content like a
-                product—something to be designed, measured, iterated, and
-                scaled. Over the past 8+ years, I've worked with founders and
-                marketing teams at B2B SaaS companies to build content systems
-                that generate predictable growth.
+                I'm Maksym Operchuk, a Python developer focused on backend services, automation, and practical AI integrations.
               </p>
               <p
                 className="text-lg md:text-xl text-muted-foreground leading-relaxed opacity-0 animate-fade-in"
                 style={{ animationDelay: "0.4s" }}
               >
-                My approach is rooted in understanding business goals first.
-                Every piece of content should have a clear purpose:{" "}
-                <span className="text-foreground font-medium">
-                  drive qualified traffic, convert visitors, onboard users, or
-                  reduce churn
-                </span>
-                . I don't believe in content for content's sake.
+                At Rozetka, I maintained a FastAPI service and worked on product data collection and matching.
+                I proposed an improvement for handling noisy product titles that became a frequently used.
+                At Ajax Systems, I developed mock gRPC services and worked on stabilizing notification tests,
+                investigating undocumented behavior with QA, app developers, and backend teams.
               </p>
               <p
                 className="text-lg md:text-xl text-muted-foreground leading-relaxed opacity-0 animate-fade-in"
                 style={{ animationDelay: "0.5s" }}
               >
-                I work best with teams who value data-driven decision making and
-                are ready to invest in content as a strategic growth lever, not
-                just a checkbox on a marketing to-do list.
+                I am currently building this AI Portfolio Agent with FastAPI,
+                LangGraph, and PostgreSQL. It combines hybrid retrieval,
+                persistent conversation memory, and a Go service for
+                Telegram notifications.
               </p>
+              <div className="space-y-6 pt-6">
+                <h2 className="font-display text-2xl md:text-3xl font-semibold">
+                  Professional Experience
+                </h2>
+                {experience.map((job) => (
+                  <article key={job.company} className="rounded-2xl border border-border/60 bg-card p-6 md:p-8">
+                    <p className="text-sm text-muted-foreground mb-2">{job.period}</p>
+                    <h3 className="font-display text-2xl font-semibold">{job.company}</h3>
+                    <p className="text-primary font-medium mt-1 mb-5">{job.role}</p>
+                    <ul className="space-y-3">
+                      {job.highlights.map((highlight) => (
+                        <li key={highlight} className="flex items-start gap-3 text-muted-foreground leading-relaxed">
+                          <CheckCircle size={18} className="mt-1 flex-shrink-0 text-primary" aria-hidden="true" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
             </div>
 
             {/* Sidebar */}
@@ -202,11 +246,11 @@ const About = () => {
               className="text-lg text-muted-foreground mb-8 opacity-0 animate-fade-in"
               style={{ animationDelay: "0.1s" }}
             >
-              If you're building a SaaS product and need content that drives
-              measurable growth, I'd love to hear about your project.
+              Looking for a Python developer for backend, automation, or AI
+              projects? Let's discuss your team and the problems you're solving.
             </p>
             <Link
-              to="/contact"
+              to="mailto:maksym.operchuk@gmail.com"
               className={cn(
                 "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full",
                 "bg-gradient-coral text-white font-semibold text-lg",
@@ -218,7 +262,7 @@ const About = () => {
               )}
               style={{ animationDelay: "0.2s" }}
             >
-              Get in Touch
+              Send an Email
               <ArrowRight size={20} />
             </Link>
           </div>

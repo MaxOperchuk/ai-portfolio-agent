@@ -109,14 +109,7 @@ const ProjectCard = ({
         {/* Metrics */}
         <div className="flex flex-wrap gap-2 mb-5">
           {metrics.map((metric, index) => (
-            <ImpactBlock
-              key={index}
-              metric={metric.value}
-              label={metric.label}
-              variant={metric.variant}
-              size="sm"
-              animate={false}
-            />
+            <ImpactBlock key={index} metric={metric.value} label={metric.label} variant={metric.variant} size="sm" animate={false} />
           ))}
         </div>
 
@@ -129,7 +122,7 @@ const ProjectCard = ({
           )}
         >
           <span className="relative">
-            View Case Study
+            View Project
             <span
               className={cn(
                 "absolute -bottom-0.5 left-0 w-0 h-0.5",

@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Send } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
+  { href: "/work", label: "Projects" },
   { href: "/about", label: "About" },
-  { href: "/styleguide", label: "Styleguide" },
-  { href: "/contact", label: "Contact" },
+  { href: "/ask-ai", label: "Ask AI" },
 ];
 
 const Header = () => {
@@ -42,11 +41,11 @@ const Header = () => {
             className="group font-display font-bold text-xl md:text-2xl text-foreground transition-all duration-300"
           >
             <span className="relative">
-              Alex
+              Maksym
               <span className="text-primary transition-colors duration-300 group-hover:text-accent">
                 .
               </span>
-              Morgan
+              Operchuk
               <span
                 className={cn(
                   "absolute -bottom-1 left-0 h-0.5 bg-gradient-coral transition-all duration-300 ease-out",
@@ -80,10 +79,14 @@ const Header = () => {
                 )}
               </Link>
             ))}
-            <Link
-              to="/contact"
+            <a
+              href="https://t.me/maksoperchuk"
+              title="Chat on Telegram"
+              aria-label="Chat on Telegram"
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
-                "ml-2 px-5 py-2.5 text-sm font-medium rounded-full",
+                "ml-2 inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium rounded-full",
                 "bg-gradient-coral text-white",
                 "shadow-md shadow-primary/20",
                 "transition-all duration-300 ease-out",
@@ -91,8 +94,9 @@ const Header = () => {
                 "active:scale-95"
               )}
             >
-              Let's Talk
-            </Link>
+              <Send size={16} aria-hidden="true" />
+              Chat on Telegram
+            </a>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -154,18 +158,23 @@ const Header = () => {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                to="/contact"
+              <a
+                href="https://t.me/maksoperchuk"
+              title="Chat on Telegram"
+              aria-label="Chat on Telegram"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}
                 className={cn(
-                  "mt-2 mx-4 px-5 py-3 text-base font-medium rounded-xl text-center",
+                  "mt-2 mx-4 inline-flex items-center justify-center gap-2 px-5 py-3 text-base font-medium rounded-xl text-center",
                   "bg-gradient-coral text-white",
                   "shadow-md shadow-primary/20",
                   "transition-all duration-300"
                 )}
               >
-                Let's Talk
-              </Link>
+                <Send size={18} aria-hidden="true" />
+                Chat on Telegram
+              </a>
             </div>
           </nav>
         </div>

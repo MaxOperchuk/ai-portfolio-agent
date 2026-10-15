@@ -2,6 +2,8 @@ export interface Project {
   slug: string;
   title: string;
   category: string;
+  githubUrl?: string;
+  stack?: { label: string; technologies: string[] }[];
   description: string;
   context: string;
   strategy: string;
@@ -16,78 +18,65 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "seo-engine",
-    title: "SEO Engine",
-    category: "Organic Growth",
+    slug: "ai-portfolio-agent",
+    githubUrl: "https://github.com/MaxOperchuk/ai-portfolio-agent",
+    stack: [
+      { label: "Language", technologies: ["Python"] },
+      { label: "API", technologies: ["FastAPI", "Pydantic"] },
+      { label: "AI Pipeline", technologies: ["LangGraph", "OpenAI", "RAG"] },
+      { label: "Data & Search", technologies: ["PostgreSQL", "pgvector"] },
+      { label: "Database Access", technologies: ["SQLAlchemy", "asyncpg", "psycopg", "Alembic"] },
+      { label: "HTTP Client", technologies: ["HTTPX"] },
+      { label: "Services & Infrastructure", technologies: ["Go", "Docker Compose"] },
+      { label: "Frontend", technologies: ["React", "TypeScript", "Vite", "Tailwind CSS"] },
+    ],
+    title: "AI Portfolio Agent",
+    category: "AI / Backend",
     description:
-      "Built an intent-driven content system that turned organic search into a scalable acquisition channel for a B2B SaaS platform.",
+      "A RAG-powered assistant that answers questions about my experience, skills, and projects.",
     context:
-      "A B2B SaaS company in the project management space was heavily dependent on paid acquisition. Their organic traffic was stagnant, and content efforts were disconnected from business goals. They needed a systematic approach to turn content into a growth engine.",
+      "A portfolio assistant that lets visitors explore my professional background through a conversation.",
     strategy:
-      "Developed an intent-mapping framework that aligned content topics with buyer journey stages. Created topic clusters around core product capabilities, with pillar pages targeting high-value commercial keywords and supporting content targeting informational queries.",
+      "Retrieve relevant portfolio information from PostgreSQL and use it to generate grounded answers with an LLM.",
     execution: [
-      "Conducted comprehensive keyword research and intent mapping across 500+ keywords",
-      "Designed content architecture with 5 pillar pages and 40+ cluster articles",
-      "Implemented internal linking strategy to maximize topical authority",
-      "Created content briefs with SEO requirements and conversion elements",
-      "Established content refresh cadence for evergreen pieces",
+      "Built a FastAPI backend with a LangGraph pipeline",
+      "Implemented hybrid retrieval using pgvector and full-text search",
+      "Persisted conversation state with PostgreSQL checkpoints",
+      "Added a Go service for Telegram notifications",
+      "Containerized services with Docker Compose",
     ],
     impact:
-      "Within 8 months, organic traffic increased by 120%, with a 35% lift in qualified leads from organic sources. The content system now generates predictable pipeline contribution month over month.",
+      "Visitors can ask questions and follow-ups about my background. Successful chats trigger Telegram notifications.",
     metrics: [
-      { value: "+120%", label: "Organic Traffic", variant: "positive" },
-      { value: "+35%", label: "Qualified Leads", variant: "positive" },
-      { value: "8mo", label: "Time to Results", variant: "neutral" },
+      { value: "FastAPI", label: "Backend", variant: "neutral" },
+      { value: "LangGraph", label: "AI Pipeline", variant: "neutral" },
+      { value: "pgvector", label: "Vector Search", variant: "neutral" },
     ],
   },
   {
-    slug: "product-launch",
-    title: "Product Launch Content",
-    category: "Launch Strategy",
+    slug: "library-service",
+    githubUrl: "https://github.com/Serejka21/DRF_APILibrary",
+    title: "Library Service",
+    category: "Backend",
     description:
-      "Orchestrated a multi-channel content strategy that drove awareness and conversions for a new product feature launch.",
+      "A Django REST Framework application for managing books, borrowing, payments, and notifications.",
     context:
-      "A growing SaaS company was launching a major new feature that represented a strategic expansion into a new market segment. They needed content that could educate the market, generate demand, and support sales enablement simultaneously.",
+      "A library backend combining borrowing management with payments and Telegram notifications.",
     strategy:
-      "Created a narrative-first approach that positioned the new feature as a category-defining solution. Developed a content pyramid starting with thought leadership, flowing down to tactical content, and supporting sales conversations at every stage.",
+      "Build a REST API with PostgreSQL storage, JWT authentication, and background processing using Celery and Redis.",
     execution: [
-      "Developed core messaging framework and positioning narrative",
-      "Created high-converting landing page with product storytelling",
-      "Produced launch blog series: vision, use cases, and implementation guides",
-      "Designed email nurture sequence for existing and new audiences",
-      "Built sales enablement materials: battlecards, one-pagers, and case study templates",
+      "Worked on book and borrowing management",
+      "Integrated Stripe payments",
+      "Implemented Telegram notifications",
+      "Used Celery and Redis for background processing",
+      "Used Docker and Swagger/OpenAPI",
     ],
     impact:
-      "The launch exceeded targets with 40% higher conversion rates than previous launches. Content-driven awareness metrics showed 2.5x improvement in brand mentions and earned media coverage.",
+      "The application supports library workflows with integrated payments and notifications.",
     metrics: [
-      { value: "+40%", label: "Conversion Rate", variant: "positive" },
-      { value: "2.5x", label: "Brand Mentions", variant: "positive" },
-      { value: "+85%", label: "Email Engagement", variant: "positive" },
-    ],
-  },
-  {
-    slug: "retention-education",
-    title: "Retention & Education",
-    category: "Customer Success",
-    description:
-      "Designed an educational content system that reduced churn and increased product adoption through strategic onboarding content.",
-    context:
-      "A B2B SaaS platform was experiencing elevated churn rates, particularly in the first 90 days. Users weren't discovering key features, and support tickets indicated knowledge gaps that better content could address.",
-    strategy:
-      "Built an education-first retention system that met users where they were in their product journey. Mapped content to activation milestones and created proactive touchpoints that anticipated user needs before they became frustrations.",
-    execution: [
-      "Analyzed churn patterns and support tickets to identify content gaps",
-      "Created milestone-based email onboarding sequence (Days 1, 3, 7, 14, 30)",
-      "Developed interactive product documentation with embedded video guides",
-      "Built in-app help content triggered by user behavior patterns",
-      "Established customer education blog with advanced use cases and workflows",
-    ],
-    impact:
-      "90-day churn decreased by 28%, while product activation rates improved by 45%. Support ticket volume dropped by 32%, indicating users were finding answers through self-service content.",
-    metrics: [
-      { value: "−28%", label: "Churn Rate", variant: "positive" },
-      { value: "+45%", label: "Activation Rate", variant: "positive" },
-      { value: "−32%", label: "Support Tickets", variant: "positive" },
+      { value: "DRF", label: "REST API", variant: "neutral" },
+      { value: "Stripe", label: "Payments", variant: "neutral" },
+      { value: "Celery", label: "Background Tasks", variant: "neutral" },
     ],
   },
 ];
