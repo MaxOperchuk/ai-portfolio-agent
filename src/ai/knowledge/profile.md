@@ -33,7 +33,7 @@ insufficient.
 He optimized scraping performance and resource usage using
 asyncio, multithreading, and multiprocessing.
 
-## Ajax Systems
+### Ajax Systems
 
 Maksym worked at Ajax Systems as a Python Developer in Test
 from July 2024 to November 2025.
