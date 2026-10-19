@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Depends, Request
+from fastapi import Query
 
 from src.core.config import settings
 from src.integrations.notification import NotificationClient
-from src.schemas.chat import ChatRequest, ChatResponse
+from src.schemas.chat import ChatRequest, ChatResponse, HistoryResponse
 from src.services.chat import ChatService
 
 router = APIRouter()
@@ -30,3 +31,13 @@ async def chat(
     )
 
     return ChatResponse(message=response)
+
+
+@router.get("/get-history", response_model=HistoryResponse)
+async def get_history(
+    thread_id: str = Query(min_length=1),
+    chat_service: ChatService = Depends(get_chat_service),
+) -> HistoryResponse:
+    history = await chat_service.get_history(thread_id)
+
+    return HistoryResponse(history=history)

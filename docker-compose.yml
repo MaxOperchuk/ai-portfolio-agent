@@ -6,6 +6,8 @@ services:
     depends_on:
       init:
         condition: service_completed_successfully
+      notification-service:
+        condition: service_started
     image: ai-portfolio-api:local
     env_file:
       - .env
@@ -15,6 +17,16 @@ services:
       NOTIFICATION_SERVICE_URL: http://notification-service:8080
     ports:
       - "127.0.0.1:8001:8000"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: ai-portfolio-frontend:local
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      api:
+        condition: service_started
   notification-service:
     build:
       context: ./notification-service
