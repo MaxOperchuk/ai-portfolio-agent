@@ -29,6 +29,9 @@ The client supplies a `thread_id` to identify a conversation.
 
 ## Configuration
 
+The environment template is intended for Docker Compose.
+Database and notification service URLs are configured in docker-compose.yml.
+
 Copy the environment template:
 
 ```bash
@@ -41,6 +44,7 @@ Set these values in `.env`:
 OPENAI_API_KEY=your_openai_api_key
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 TELEGRAM_CHAT_ID=your_telegram_chat_id
+POSTGRES_PASSWORD=your_generated_database_password
 ```
 
 Do not commit `.env`.
@@ -137,7 +141,7 @@ Host: localhost
 Port: 5434
 Database: ai_portfolio
 User: postgres
-Password: postgres
+Password: the POSTGRES_PASSWORD value from .env
 ```
 
 ## Current Scope
