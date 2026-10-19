@@ -12,8 +12,8 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/ai_portfolio
-      CHECKPOINTER_DATABASE_URL: postgresql://postgres:postgres@postgres:5432/ai_portfolio
+      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/ai_portfolio
+      CHECKPOINTER_DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/ai_portfolio
       NOTIFICATION_SERVICE_URL: http://notification-service:8080
     ports:
       - "127.0.0.1:8001:8000"
@@ -41,7 +41,7 @@ services:
     environment:
       POSTGRES_DB: ai_portfolio
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
     ports:
       - "127.0.0.1:5434:5432"
     volumes:
@@ -60,8 +60,8 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgresql+asyncpg://postgres:postgres@postgres:5432/ai_portfolio
-      CHECKPOINTER_DATABASE_URL: postgresql://postgres:postgres@postgres:5432/ai_portfolio
+      DATABASE_URL: postgresql+asyncpg://postgres:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/ai_portfolio
+      CHECKPOINTER_DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@postgres:5432/ai_portfolio
     depends_on:
       postgres:
         condition: service_healthy
