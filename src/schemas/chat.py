@@ -1,10 +1,21 @@
-from pydantic import BaseModel, Field
 from typing import Literal
+
+from pydantic import BaseModel, Field, field_validator
 
 
 class ChatRequest(BaseModel):
-    message: str
+    message: str = Field(min_length=1, max_length=2000)
     thread_id: str = Field(min_length=1)
+
+    @field_validator("message")
+    @classmethod
+    def validate_message(cls, message: str) -> str:
+        message = message.strip()
+
+        if not message:
+            raise ValueError("Message must not be blank")
+
+        return message
 
 
 class ChatResponse(BaseModel):
