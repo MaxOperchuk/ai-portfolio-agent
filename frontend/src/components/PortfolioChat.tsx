@@ -172,6 +172,14 @@ export default function PortfolioChat() {
         body: JSON.stringify({ message: content, thread_id: threadId }),
         signal: controller.signal,
       });
+      if (response.status === 429) {
+        savePending(null);
+        setIsLoading(false);
+        setQuestion(content);
+        setMessages((current) => current.slice(0, request.userIndex));
+        setError("Too many requests. Please wait a moment and try again.");
+        return;
+      }
       if (!response.ok) throw new Error(`Request failed (${response.status})`);
       const data = await response.json();
       if (typeof data?.message !== "string") throw new Error("Unexpected server response");
